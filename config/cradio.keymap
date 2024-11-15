@@ -9,6 +9,26 @@
 #define HRML(k1,k2,k3,k4) &ht LSHFT k1  &ht LALT k2  &ht LCTRL k3  &ht LGUI k4
 #define HRMR(k1,k2,k3,k4) &ht RGUI k1  &ht RCTRL k2  &ht RALT k3  &ht RSHFT k4
 
+&kscan0 {
+    compatible = "zmk,kscan-gpio-matrix";
+    diode-direction = "col2row";
+    wakeup-source;
+
+    col-gpios
+        = <&pro_micro 8 (GPIO_ACTIVE_HIGH)> // COL0
+        , <&pro_micro 7 (GPIO_ACTIVE_HIGH)> // COL1
+        , <&pro_micro 6 (GPIO_ACTIVE_HIGH)> // COL2
+        , <&pro_micro 9 (GPIO_ACTIVE_HIGH)> // COL3
+        , <&pro_micro 10 (GPIO_ACTIVE_HIGH)> // COL4
+    ;
+    row-gpios
+        = <&pro_micro 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW0
+        , <&pro_micro 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW1
+        , <&pro_micro 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW2
+        , <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW3
+    ;
+};
+
 / {
     behaviors {
         ht: hold_tap {
